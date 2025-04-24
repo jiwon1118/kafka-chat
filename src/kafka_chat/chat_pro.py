@@ -4,16 +4,15 @@ from tqdm import tqdm
 import json
 
 def chatpro():
-    bootstrap_servers = input("Kafka bootstrap 서버 주소 입력 (예: 34.47.66.30:9092): ").strip()
+    bootstrap_servers = input("Kafka bootstrap 서버 주소 입력 (예: 34.64.106.237:9092): ").strip()
     topic = input("Kafka 토픽 이름 입력 (예: quickstart-events): ").strip()
-
+    
     try:
         producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
-            value_serializer=lambda v: json.dumps(v).encode('utf-8')
+            value_serializer=lambda v: json.dumps(v, ensure_ascii=False).encode('utf-8')
         )
     except Exception as e:
-        print(f"Kafka 프로듀서 생성 실패: {e}")
         return
 
     print("메시지를 입력하세요 (종료하려면 'exit' 입력)")
