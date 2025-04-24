@@ -19,18 +19,18 @@ def chatpro():
     print("메시지를 입력하세요 (종료하려면 'exit' 입력)")
 
     while True:
-        msg_input = input("✉️ 메시지: ").strip()
+        msg_input = input("You: ").strip()
         if msg_input.lower() == 'exit':
             print("종료합니다.")
             producer.flush()
             break
 
-        msg = {"msg": msg_input}
+        msg = f"Friend: {msg_input}"
         try:
             producer.send(topic, msg)
             producer.flush()
         except Exception as e:
-            print(f"⚠️ 전송 오류: {e}")
+            print(f" 전송 오류: {e}")
 
     print("모든 메시지 전송 완료. 프로그램 종료.")
 
