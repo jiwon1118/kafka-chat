@@ -18,7 +18,6 @@ def chatpro():
 
     print("메시지를 입력하세요 (종료하려면 'exit' 입력)")
 
-    count = 0
     while True:
         msg_input = input("✉️ 메시지: ").strip()
         if msg_input.lower() == 'exit':
@@ -33,7 +32,7 @@ def chatpro():
         except Exception as e:
             print(f"⚠️ 전송 오류: {e}")
 
-    print("✅ 모든 메시지 전송 완료. 프로그램 종료.")
+    print("모든 메시지 전송 완료. 프로그램 종료.")
 
 if __name__ == "__main__":
     chatpro()
